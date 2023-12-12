@@ -9,12 +9,11 @@ trameGPGGA_t *Decode_GPGGA(char *stringRead){
     char sepaparator[] = ",";
 
     // Time
-    char *data = strtok(NULL, sepaparator);
+    char *data = strtok(stringRead, sepaparator);
     int hours, minutes;
     double seconds;
     sscanf(data, "%2d%2d%lf",&hours,&minutes,&seconds);
     pTrame->hour = (double)hours*3600 + (double)minutes*60 + seconds;
-    printf("> %.3f\n", pTrame->hour);
 
     // Lattitude
     data = strtok(NULL, sepaparator);
@@ -22,12 +21,10 @@ trameGPGGA_t *Decode_GPGGA(char *stringRead){
     double  latMinuts;
     sscanf(data, "%2d%lf", &latDegree, &latMinuts);
     pTrame->latitude = latDegree + (latMinuts/60);
-    printf("> %.5f\n",pTrame->latitude);
 
     // Latitude dir
     data = strtok(NULL, sepaparator);
     pTrame->latitudeDirection = *data;
-    printf("> %c\n",*data);
 
     // longitude
     data = strtok(NULL, sepaparator);
@@ -35,37 +32,30 @@ trameGPGGA_t *Decode_GPGGA(char *stringRead){
     double  longMinuts;
     sscanf(data, "%3d%lf", &longDegree, &longMinuts);
     pTrame->longitude = longDegree + (longMinuts/60);
-    printf("> %.4f\n",pTrame->longitude);
 
     // longitude dir
     data = strtok(NULL, sepaparator);
     pTrame->longitudeDirection = *data;
-    printf("> %c\n",*data);
 
     // Type of GPS
     data = strtok(NULL, sepaparator);
     sscanf(data, "%d", &pTrame->typeGpsPositionning);
-    printf("> %d\n",pTrame->typeGpsPositionning);
     
     // Number of satelite in vision
     data = strtok(NULL, sepaparator);
     sscanf(data, "%d", &pTrame->NbVisionSatelites);
-    printf("> %d\n",pTrame->NbVisionSatelites);
 
     // HDOP
     data = strtok(NULL, sepaparator);
     sscanf(data, "%f",&pTrame->hdop);
-    printf("> %.2f\n",pTrame->hdop);
     
     // Altitude
     data = strtok(NULL, sepaparator);
     sscanf(data, "%lf", &pTrame->altitude);
-    printf("> %f\n",pTrame->altitude);
 
     // Altitude dir
     data = strtok(NULL, sepaparator);
     pTrame->altitudeMeasuringUnit = *data;
-    printf("> %c\n",pTrame->altitudeMeasuringUnit);
     
     // EOF
     
