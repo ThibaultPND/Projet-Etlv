@@ -52,14 +52,14 @@ int main(int argc, char *argv[]) {
             json_object_object_add(jsonObjectTrame, "type", json_object_new_string(trame_GPGGA));
             json_object_object_add(jsonObjectTrame, "time", json_object_new_double(pTrameGPGGA->hour));
             json_object_object_add(jsonObjectTrame, "longitude", json_object_new_double(pTrameGPGGA->longitude));
-            json_object_object_add(jsonObjectTrame, "longitudeDirection", json_object_new_double(pTrameGPGGA->longitudeDirection));
+            json_object_object_add(jsonObjectTrame, "longitudeDirection", json_object_new_string_len(&pTrameGPGGA->longitudeDirection,1));
             json_object_object_add(jsonObjectTrame, "latitude", json_object_new_double(pTrameGPGGA->latitude));
-            json_object_object_add(jsonObjectTrame, "latitudeDirection", json_object_new_double(pTrameGPGGA->latitudeDirection));
-            json_object_object_add(jsonObjectTrame, "typeGpsPositionning", json_object_new_double(pTrameGPGGA->typeGpsPositionning));
-            json_object_object_add(jsonObjectTrame, "NbVisionSatelites", json_object_new_double(pTrameGPGGA->NbVisionSatelites));
+            json_object_object_add(jsonObjectTrame, "latitudeDirection", json_object_new_string_len(&pTrameGPGGA->latitudeDirection,1));
+            json_object_object_add(jsonObjectTrame, "typeGpsPositionning", json_object_new_int(pTrameGPGGA->typeGpsPositionning));
+            json_object_object_add(jsonObjectTrame, "NbVisionSatelites", json_object_new_int(pTrameGPGGA->NbVisionSatelites));
             json_object_object_add(jsonObjectTrame, "hdop", json_object_new_double(pTrameGPGGA->hdop));
             json_object_object_add(jsonObjectTrame, "altitude", json_object_new_double(pTrameGPGGA->altitude));
-            json_object_object_add(jsonObjectTrame, "altitudeMeasuringUnit", json_object_new_double(pTrameGPGGA->altitudeMeasuringUnit));
+            json_object_object_add(jsonObjectTrame, "altitudeMeasuringUnit", json_object_new_string_len(&pTrameGPGGA->altitudeMeasuringUnit,1));
             
             char chaine[20];
             sprintf(chaine, "Chaine %d", j);
